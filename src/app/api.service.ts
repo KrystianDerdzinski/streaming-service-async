@@ -7,12 +7,14 @@ import { PlaylistInterface } from './interfaces/playlist.interface';
   providedIn: 'root',
 })
 export class ApiService {
-  getPlaylistName() {
-    const url = `https://youtube.googleapis.com/youtube/v3/playlists?part=snippet&id=PL197873A96AF34C19&key=${API_KEY}`;
+  getPlaylistName(playlistId: string) {
+    const url = `https://youtube.googleapis.com/youtube/v3/playlists?part=snippet&id=${playlistId}&key=${API_KEY}`;
     return this.http.get<PlaylistInterface>(url);
   }
 
-  constructor(private http: HttpClient) {
-    console.log('hello from api service!');
+  getPlaylistItems(playlistId: string) {
+    const url = `https://youtube.googleapis.com/youtube/v3/playlistItems?part=snippet&playlistId=${playlistId}&key=${API_KEY}`;
   }
+
+  constructor(private http: HttpClient) {}
 }

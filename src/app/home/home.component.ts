@@ -10,15 +10,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
   playlistId = 'PL197873A96AF34C19';
+  playlistName = '';
 
   ngOnInit(): void {
-    const playlistName = this.apiService.getPlaylistName();
-    console.log(playlistName);
+    this.apiService.getPlaylistName(this.playlistId).subscribe((playlist) => {
+      this.playlistName = playlist.items[0].snippet.title;
+    });
   }
 
   constructor(private apiService: ApiService) {}
 }
-
-// zadanie:
-// uzyj dependency injection (w constructor, aby wstrzyknac api.service do home component.
-// jesli Ci sie udalo, to w konsoli widzisz "hello from api service"
