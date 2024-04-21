@@ -1,5 +1,5 @@
 import { ApiService } from './../api.service';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-home',
@@ -8,8 +8,13 @@ import { Component } from '@angular/core';
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss',
 })
-export class HomeComponent {
+export class HomeComponent implements OnInit {
   playlistId = 'PL197873A96AF34C19';
+
+  ngOnInit(): void {
+    const playlistName = this.apiService.getPlaylistName();
+    console.log(playlistName);
+  }
 
   constructor(private apiService: ApiService) {}
 }
