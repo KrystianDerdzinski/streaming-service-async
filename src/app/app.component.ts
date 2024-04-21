@@ -10,6 +10,4 @@ import { MatIconModule } from '@angular/material/icon';
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
 })
-export class AppComponent {
-  playlistId = 'PL197873A96AF34C19';
-}
+export class AppComponent {}
