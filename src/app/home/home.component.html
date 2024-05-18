@@ -8,20 +8,20 @@
   <mat-tab label="second">drugi content</mat-tab>
 </mat-tab-group>
 
-{{ playlistName | json }}
-
-<div *ngFor="let item of playlistItems">
-  <mat-card class="mat-card-video">
-    <a [href]="'video?id=' + item.snippet.resourceId.videoId">
-      <mat-card-title>{{ item.snippet.title }}</mat-card-title>
-    </a>
-    <img
-      mat-card-image
-      [src]="item.snippet.thumbnails.medium.url"
-      [alt]="item.snippet.title"
-    />
-    <mat-card-footer>
-      {{ item.snippet.description }}
-    </mat-card-footer>
-  </mat-card>
-</div>
+<ng-container *ngFor="let playlist of playlistItems">
+  <div *ngFor="let item of playlist">
+    <mat-card class="mat-card-video">
+      <a [href]="'video?id=' + item.snippet.resourceId.videoId">
+        <mat-card-title>{{ item.snippet.title }}</mat-card-title>
+      </a>
+      <img
+        mat-card-image
+        [src]="item.snippet.thumbnails.medium.url"
+        [alt]="item.snippet.title"
+      />
+      <mat-card-footer>
+        {{ item.snippet.description }}
+      </mat-card-footer>
+    </mat-card>
+  </div>
+</ng-container>

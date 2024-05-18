@@ -18,20 +18,19 @@ export class HomeComponent implements OnInit {
     'PL197873A96AF34C19',
     'PLpkgjbXReLDIJ_dAREZBBz-Vizn9mfjSN',
   ];
-  playlistName: string[] = [];
-  playlistItems: SingleVideoInterface[] = [];
+  playlistNames: string[] = [];
+  playlistItems: SingleVideoInterface[][] = [];
 
   ngOnInit(): void {
     this.playlistId.forEach((item) => {
       this.apiService.getPlaylistName(item).subscribe((playlist) => {
-        this.playlistName.push(playlist.items[0].snippet.title);
+        this.playlistNames.push(playlist.items[0].snippet.title);
+      });
+      this.apiService.getPlaylistItems(item).subscribe((items) => {
+        this.playlistItems.push(items.items);
+        console.log(this.playlistItems);
       });
     });
-
-    // this.apiService.getPlaylistItems(this.playlistId).subscribe((items) => {
-    //   this.playlistItems = items.items;
-    //   console.log(this.playlistItems);
-    // });
   }
 
   constructor(private apiService: ApiService) {}
