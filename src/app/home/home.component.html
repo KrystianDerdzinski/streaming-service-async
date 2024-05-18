@@ -3,7 +3,12 @@
   <mat-icon class="icon">headset_mic</mat-icon>
 </header>
 
-{{ playlistName }}
+<mat-tab-group>
+  <mat-tab label="first">pierwszy content</mat-tab>
+  <mat-tab label="second">drugi content</mat-tab>
+</mat-tab-group>
+
+{{ playlistName | json }}
 
 <div *ngFor="let item of playlistItems">
   <mat-card class="mat-card-video">
