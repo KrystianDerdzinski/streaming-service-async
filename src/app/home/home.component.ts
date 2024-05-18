@@ -1,11 +1,13 @@
+import { CommonModule } from '@angular/common';
 import { SingleVideoInterface } from '../interfaces/single-video.interface';
 import { ApiService } from './../api.service';
 import { Component, OnInit } from '@angular/core';
+import { MatIconModule } from '@angular/material/icon';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [],
+  imports: [CommonModule, MatIconModule],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss',
 })
@@ -22,7 +24,7 @@ export class HomeComponent implements OnInit {
     this.apiService.getPlaylistItems(this.playlistId).subscribe((items) => {
       this.playlistItems = items.items;
       console.log(this.playlistItems);
-      // wyswietl tytuly filmow z playlistItems w HTML
+      // wyswietl te dane przy pomocy *ngFor
     });
   }
 

@@ -1,1 +1,14 @@
+<header>
+  <h1>Electronic Music Library</h1>
+  <mat-icon class="icon">headset_mic</mat-icon>
+</header>
+
 {{ playlistName }}
+
+<div style="border: 1px solid red" *ngFor="let item of playlistItems">
+  <a [href]="'video?id=' + item.snippet.resourceId.videoId">
+    {{ item.snippet.title }}
+  </a>
+</div>
+
+{{ playlistItems | json }}
