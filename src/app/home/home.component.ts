@@ -3,11 +3,13 @@ import { SingleVideoInterface } from '../interfaces/single-video.interface';
 import { ApiService } from './../api.service';
 import { Component, OnInit } from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
+import { MatCardModule } from '@angular/material/card';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [CommonModule, MatIconModule],
+  imports: [CommonModule, MatIconModule, MatCardModule, MatSlideToggleModule],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss',
 })

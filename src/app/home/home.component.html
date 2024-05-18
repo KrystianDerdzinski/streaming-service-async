@@ -5,8 +5,18 @@
 
 {{ playlistName }}
 
-<div style="border: 1px solid red" *ngFor="let item of playlistItems">
-  <a [href]="'video?id=' + item.snippet.resourceId.videoId">
-    {{ item.snippet.title }}
-  </a>
+<div *ngFor="let item of playlistItems">
+  <mat-card class="mat-card-video">
+    <a [href]="'video?id=' + item.snippet.resourceId.videoId">
+      <mat-card-title>{{ item.snippet.title }}</mat-card-title>
+    </a>
+    <img
+      mat-card-image
+      [src]="item.snippet.thumbnails.medium.url"
+      [alt]="item.snippet.title"
+    />
+    <mat-card-footer>
+      {{ item.snippet.description }}
+    </mat-card-footer>
+  </mat-card>
 </div>
