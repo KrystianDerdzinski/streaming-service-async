@@ -4,13 +4,8 @@
 </header>
 
 <mat-tab-group>
-  <mat-tab label="first">pierwszy content</mat-tab>
-  <mat-tab label="second">drugi content</mat-tab>
-</mat-tab-group>
-
-<mat-tab-group>
-  <ng-container *ngFor="let playlist of playlistItems">
-    <mat-tab>
+  <ng-container *ngFor="let playlist of playlistItems; index as i">
+    <mat-tab [label]="playlistNames[i]">
       <div *ngFor="let item of playlist">
         <mat-card class="mat-card-video">
           <a [href]="'video?id=' + item.snippet.resourceId.videoId">
@@ -29,5 +24,3 @@
     </mat-tab>
   </ng-container>
 </mat-tab-group>
-
-<!-- spraw, aby w mat-tab wyswietlaly sie labele -->

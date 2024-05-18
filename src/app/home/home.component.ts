@@ -24,6 +24,7 @@ export class HomeComponent implements OnInit {
   ngOnInit(): void {
     this.playlistId.forEach((item) => {
       this.apiService.getPlaylistName(item).subscribe((playlist) => {
+        console.log(playlist);
         this.playlistNames.push(playlist.items[0].snippet.title);
       });
       this.apiService.getPlaylistItems(item).subscribe((items) => {
