@@ -8,13 +8,13 @@ import { PlaylistItemsInterface } from './interfaces/playlist-items.interface';
   providedIn: 'root',
 })
 export class ApiService {
-  getPlaylistName(playlistId: string) {
+  getPlaylistName$(playlistId: string) {
     const url = `https://youtube.googleapis.com/youtube/v3/playlists?part=snippet&id=${playlistId}&key=${API_KEY}`;
     return this.http.get<PlaylistInterface>(url);
   }
 
-  getPlaylistItems(playlistId: string) {
-    const url = `https://youtube.googleapis.com/youtube/v3/playlistItems?part=snippet&playlistId=${playlistId}&key=${API_KEY}`;
+  getPlaylistItems$(playlistId: string) {
+    const url = `https://youtube.googleapis.com/youtube/v3/playlistItems?part=snippet&playlistId=${playlistId}&key=${API_KEY}&maxResults=50`;
     return this.http.get<PlaylistItemsInterface>(url);
   }
 

@@ -4,23 +4,25 @@
 </header>
 
 <mat-tab-group>
-  <ng-container *ngFor="let playlist of playlistItems; index as i">
-    <mat-tab [label]="playlistNames[i]">
-      <div *ngFor="let item of playlist">
-        <mat-card class="mat-card-video">
-          <a [href]="'video?id=' + item.snippet.resourceId.videoId">
-            <mat-card-title>{{ item.snippet.title }}</mat-card-title>
-          </a>
-          <img
-            mat-card-image
-            [src]="item.snippet.thumbnails.medium.url"
-            [alt]="item.snippet.title"
-          />
-          <mat-card-footer>
-            {{ item.snippet.description }}
-          </mat-card-footer>
-        </mat-card>
-      </div>
-    </mat-tab>
+  <ng-container *ngFor="let playlist$ of playlistItems; index as i">
+    <ng-container *ngIf="playlist$ | async as playlist">
+      <mat-tab [label]="playlistNames[i] | async">
+        <div *ngFor="let item of playlist.items">
+          <mat-card class="mat-card-video">
+            <a [href]="'video?id=' + item.snippet.resourceId.videoId">
+              <mat-card-title>{{ item.snippet.title }}</mat-card-title>
+            </a>
+            <img
+              mat-card-image
+              [src]="item.snippet.thumbnails.high?.url"
+              [alt]="item.snippet.title"
+            />
+            <mat-card-footer>
+              {{ item.snippet.description }}
+            </mat-card-footer>
+          </mat-card>
+        </div>
+      </mat-tab>
+    </ng-container>
   </ng-container>
 </mat-tab-group>
